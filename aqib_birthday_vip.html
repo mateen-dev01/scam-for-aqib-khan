@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080a0e">
+<title>A Gift for Aqib | From Mateen</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+:root{--bg:#080a0e;--panel:#11151b;--gold:#e7c47d;--gold2:#a9823f;--cream:#f8f1e5;--muted:#a7a7a4;--line:#ffffff18}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+button{font:inherit}
+#rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.drop{position:absolute;top:-60px;animation:fall linear forwards;will-change:transform}
+@keyframes fall{0%{transform:translate3d(0,-5vh,0) rotate(0);opacity:0}8%{opacity:1}90%{opacity:.95}100%{transform:translate3d(var(--drift),110vh,0) rotate(var(--spin));opacity:0}}
+.scene{min-height:100svh;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:64px 22px 42px;position:relative;isolation:isolate}
+.scene.active{display:flex;animation:reveal .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes reveal{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+.scene:before{content:"";position:absolute;width:min(90vw,540px);height:min(90vw,540px);border-radius:50%;background:radial-gradient(circle,#a77b3217,transparent 68%);z-index:-1;pointer-events:none}
+.topline{position:absolute;top:22px;left:22px;right:22px;display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:2px;color:#c4b28f;text-transform:uppercase}
+.progress{height:2px;position:fixed;top:0;left:0;background:linear-gradient(90deg,#9d7337,var(--gold));z-index:30;width:16.6%;transition:width .5s}
+.kicker{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:700}
+.serif{font-family:'Playfair Display',serif}
+.hero-title{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(54px,14vw,94px);line-height:.94;letter-spacing:-3px;margin:25px 0 18px}
+.gold{color:var(--gold);font-style:italic}
+.sub{color:#b4b3ae;font-size:13px;line-height:1.9;max-width:310px;margin:0 auto}
+.eyebrow{display:flex;align-items:center;gap:12px;justify-content:center;color:#a5a098;font-size:9px;letter-spacing:3px;text-transform:uppercase}
+.eyebrow:before,.eyebrow:after{content:"";height:1px;width:28px;background:#8f6b35}
+.orb{width:116px;height:116px;border:1px solid #d9b66d75;border-radius:50%;display:grid;place-items:center;position:relative;margin:26px auto 18px;box-shadow:0 0 70px #b88b3820,inset 0 0 30px #c49a4b10}
+.orb:before,.orb:after{content:"";position:absolute;inset:-9px;border:1px solid #d9b66d20;border-radius:50%;animation:spin 18s linear infinite}
+.orb:after{inset:-17px;border-style:dashed;animation-direction:reverse;animation-duration:35s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb span{font-size:48px;filter:drop-shadow(0 0 15px #e4c17655)}
+.btn{border:1px solid var(--gold2);background:linear-gradient(135deg,#e9cd8e,#bb914d);color:#111318;padding:16px 22px;min-height:50px;min-width:205px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:transform .2s,filter .2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+.btn:active{transform:scale(.97)}.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--gold);border:1px solid #b18a4b80;clip-path:none}
+.actions{display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:30px}
+.micro{font-size:9px;letter-spacing:2px;color:#6e706f;text-transform:uppercase;margin-top:25px}
+.divider{width:44px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:23px auto}
+.headline{font:500 clamp(36px,9vw,57px)/1.06 'Playfair Display',serif;letter-spacing:-1.5px;margin:18px 0}
+.card{width:min(100%,380px);border:1px solid #d9b66d30;background:linear-gradient(145deg,#171a1e,#0d1015);padding:28px 22px;box-shadow:0 20px 60px #0005}
+.card p{font-size:13px;color:#c2c0ba;line-height:1.9}
+.cake-stage{position:relative;width:250px;height:235px;margin:20px auto 16px}
+.plate{position:absolute;bottom:19px;left:13px;width:224px;height:25px;border-radius:50%;background:linear-gradient(#e7d5b0,#9f8356);box-shadow:0 10px 30px #0008}
+.cake{position:absolute;left:35px;bottom:39px;width:180px;height:93px;border-radius:12px 12px 18px 18px;background:linear-gradient(90deg,#a94f3e,#d98a69 45%,#a94f3e);box-shadow:inset 0 7px 0 #f5d9b6,0 9px 0 #713d36}
+.cake:before{content:"";position:absolute;top:5px;left:0;width:100%;height:23px;background:#f5e5ca;border-radius:12px 12px 8px 8px;clip-path:polygon(0 0,100% 0,100% 60%,90% 100%,78% 60%,65% 100%,51% 60%,36% 100%,22% 60%,10% 100%,0 60%)}
+.cake:after{content:"✦  A Q I B  ✦";position:absolute;bottom:23px;left:0;right:0;font-size:10px;letter-spacing:2px;color:#ffe7b3}
+.candle{position:absolute;z-index:3;bottom:130px;left:120px;width:10px;height:48px;border-radius:3px;background:repeating-linear-gradient(45deg,#fff4d8 0 5px,#bd8b43 5px 10px)}
+.flame{position:absolute;top:-23px;left:-2px;width:14px;height:22px;background:linear-gradient(#fff5b0,#ff9d25);border-radius:70% 30% 60% 40%;transform:rotate(42deg);filter:drop-shadow(0 0 12px #ffb12c);animation:flicker .38s ease-in-out infinite alternate}
+@keyframes flicker{to{transform:rotate(30deg) scale(.8)}}
+.cake-message{font-size:12px;line-height:1.8;color:#b6b4ae;max-width:300px}
+.envelope{position:relative;width:min(290px,82vw);height:175px;margin:29px auto 23px;background:#c4a16a;box-shadow:0 20px 60px #0005;cursor:pointer;display:grid;place-items:center}
+.envelope:before{content:"";position:absolute;inset:0;background:#e4c998;clip-path:polygon(0 0,50% 57%,100% 0)}
+.envelope:after{content:"";position:absolute;inset:0;background:#b38b50;clip-path:polygon(0 100%,0 0,50% 60%,100% 0,100% 100%)}
+.seal{position:absolute;z-index:3;top:41%;left:calc(50% - 21px);width:42px;height:42px;border-radius:50%;background:#8e342d;color:#f8dfaa;display:grid;place-items:center;border:1px solid #edc980;font-size:18px;box-shadow:0 4px 12px #0002}
+.letter{display:none;text-align:left;width:min(100%,390px);padding:27px 22px;background:#f5ead6;color:#24231f;border:1px solid #d8bb83;box-shadow:0 25px 70px #0007;line-height:1.85;font-size:13px}
+.letter.show{display:block;animation:reveal .7s both}
+.letter .kicker{color:#946a2c;font-size:9px;letter-spacing:3px}
+.letter p{margin:12px 0}
+.final-seal{font-size:54px;margin:25px 0;filter:drop-shadow(0 0 25px #cfa44e40)}
+.footer-note{font-size:9px;letter-spacing:3px;color:#77756f;margin-top:25px}
+@media(min-width:600px){.scene{padding-left:32px;padding-right:32px}.actions{flex-direction:row;justify-content:center}.topline{left:34px;right:34px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div id="rain" aria-hidden="true"></div>
+<main>
+<section class="scene active" id="s1">
+<div class="topline"><span>Private birthday experience</span><span>01 / 06</span></div>
+<div class="eyebrow">A gift from Mateen</div>
+<div class="orb"><span>🎁</span></div>
+<p class="kicker">For someone who became family</p>
+<h1 class="hero-title">Happy<br><span class="gold">Birthday,</span><br>Aqib.</h1>
+<p class="sub">Almost four years of friendship.<br>A lifetime of brotherhood to go.</p>
+<div class="divider"></div>
+<p class="serif" style="font-size:19px;font-style:italic;color:#e4d4b2">This one's from my heart to yours.</p>
+<div class="actions"><button class="btn" onclick="go(2)">Unlock Your Surprise&nbsp; ↗</button></div>
+<p class="micro">Turn your sound on · Take your time</p>
+</section>
+
+<section class="scene" id="s2">
+<div class="topline"><span>Made for Aqib</span><span>02 / 06</span></div>
+<p class="kicker">A little look back</p>
+<h2 class="headline">Four years<br>almost. <span class="gold">Forever us.</span></h2>
+<div class="card">
+<div style="font-size:39px;margin-bottom:10px">🤝</div>
+<p style="font-family:'Playfair Display',serif;font-size:24px;color:#f7e8c9;line-height:1.4">Some friendships turn into family.</p>
+<p>And somehow, ours became more than just friendship. Almost four years of memories, laughs, random moments and a bond that means more than words can explain.</p>
+<div class="divider"></div>
+<p style="color:var(--gold);font-family:'Playfair Display',serif;font-style:italic">You're not just my friend, Aqib.<br>You're my brother.</p>
+</div>
+<div class="actions"><button class="btn" onclick="go(3)">The Birthday Moment →</button></div>
+</section>
+
+<section class="scene" id="s3">
+<div class="topline"><span>Make a wish</span><span>03 / 06</span></div>
+<p class="kicker">Your moment. Your wish.</p>
+<h2 class="headline">One candle.<br><span class="gold">A thousand dreams.</span></h2>
+<div class="cake-stage">
+<div class="candle"><div class="flame" id="flame"></div></div>
+<div class="cake"></div><div class="plate"></div>
+</div>
+<p class="cake-message" id="cakeText">Take a breath, make a wish, and think about everything you want from this new chapter.</p>
+<div class="actions"><button class="btn" id="blow" onclick="blowCandles()">Blow Out The Candle ✨</button></div>
+<p class="micro" id="cakeHint">A little magic, just for you</p>
+</section>
+
+<section class="scene" id="s4">
+<div class="topline"><span>Birthday unlocked</span><span>04 / 06</span></div>
+<p class="kicker">Let the celebration begin</p>
+<div style="font-size:75px;margin:26px 0;filter:drop-shadow(0 0 20px #e6bf6a25)">🎂</div>
+<h2 class="headline">Your next chapter<br>starts <span class="gold">now.</span></h2>
+<p class="sub">More happiness. Bigger wins. Peace of mind. Dreams coming true. And countless reasons to smile.</p>
+<div class="divider"></div>
+<p class="serif" style="font-size:22px;line-height:1.6">May Allah keep you happy,<br>protected, and successful. 🤍</p>
+<div class="actions"><button class="btn" onclick="go(5)">There's A Letter For You →</button></div>
+</section>
+
+<section class="scene" id="s5">
+<div class="topline"><span>From Mateen, with love</span><span>05 / 06</span></div>
+<p class="kicker">Something I want you to know</p>
+<h2 class="headline">Not every feeling<br>fits in a <span class="gold">message.</span></h2>
+<p class="sub">Tap the envelope. These words are from me, your brother.</p>
+<div class="envelope" id="env" onclick="openLetter()" role="button" aria-label="Open personal letter" tabindex="0">
+<div class="seal">♥</div>
+</div>
+<div class="letter" id="letter">
+<p class="kicker">To my brother, Aqib</p>
+<p><strong>Aqib mere bhai ❤️</strong></p>
+<p>Happy Birthday, yaar. Almost 4 years ho gaye hamari dosti ko, aur honestly, tu mere liye sirf dost nahi hai. Tu bhaiyon se bhi barh kar hai. Kuch rishte blood se nahi, dil se bante hain — aur mere liye tu unhi rishton mein se hai.</p>
+<p>Main shayad har baar bol nahi pata ke tu mere liye kitna matter karta hai, lekin teri khushi, teri success aur tera sukoon mere liye important hai. Dua hai Allah tujhe hamesha khush rakhe, har buri cheez se bachaye, aur tere har ache dream ko poora kare.</p>
+<p>Life mein kabhi sab kuch easy nahi hoga, lekin yaad rakhna ke tera bhai Mateen tere liye hamesha achi dua karega. Hamari dosti ke ye almost 4 years mere liye special hain, aur umeed hai aage aur bohat saari memories banani hain.</p>
+<p>Thank you for being more than a friend. Thank you for being my brother. ❤️</p>
+<p style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px">Happy Birthday, mere bhai. Always got love and respect for you.</p>
+<p><strong>— Teri taraf se nahi, teri taraf khara: Mateen 🤝</strong></p>
+</div>
+<div class="actions"><button class="btn" id="letterNext" style="display:none" onclick="go(6)">One Last Wish →</button></div>
+</section>
+
+<section class="scene" id="s6">
+<div class="topline"><span>Always your brother</span><span>06 / 06</span></div>
+<p class="kicker">For your whole journey ahead</p>
+<div class="final-seal">✦</div>
+<h2 class="hero-title" style="font-size:clamp(49px,12vw,80px)">Keep<br><span class="gold">Shining,</span><br>Aqib.</h2>
+<p class="sub">May this year bring you closer to your dreams, surround you with genuine people, and give you a thousand reasons to be grateful.</p>
+<div class="divider"></div>
+<p class="serif" style="font-size:23px;line-height:1.5">Almost 4 years down.<br><span class="gold">Brotherhood forever.</span></p>
+<p style="font-size:32px;margin:18px 0">🤍 🫂 ✨</p>
+<p class="kicker">With love, respect & duas</p>
+<p class="serif" style="font-size:24px;margin:10px 0 0">Your brother, Mateen.</p>
+<div class="actions"><button class="btn" onclick="celebrateAgain()">Celebrate Again ✨</button><button class="btn ghost" onclick="go(1)">Replay Experience ↻</button></div>
+<p class="footer-note">MADE FROM THE HEART · JUST FOR AQIB</p>
+</section>
+</main>
+<script>
+let current=1,blown=false,letterOpened=false;
+const rain=document.getElementById('rain');
+function sprinkle(count=42){
+const pieces=['🎂','✨','✦','🎉','🎊','♥','✧','▰'];
+for(let i=0;i<count;i++){
+const el=document.createElement('span');el.className='drop';el.textContent=pieces[Math.floor(Math.random()*pieces.length)];
+el.style.left=Math.random()*100+'%';el.style.fontSize=(9+Math.random()*17)+'px';
+el.style.setProperty('--drift',(Math.random()*150-75)+'px');el.style.setProperty('--spin',(Math.random()*900-450)+'deg');
+el.style.animationDuration=(3.5+Math.random()*5)+'s';el.style.animationDelay=(Math.random()*2)+'s';
+rain.appendChild(el);setTimeout(()=>el.remove(),10500);
+}}
+function go(n){
+document.getElementById('s'+current).classList.remove('active');current=n;
+document.getElementById('s'+n).classList.add('active');
+document.getElementById('progress').style.width=(n/6*100)+'%';
+document.querySelector('#s'+n+' .topline span:last-child').textContent=String(n).padStart(2,'0')+' / 06';
+window.scrollTo({top:0,behavior:'smooth'});
+if([2,4,6].includes(n))sprinkle(n===6?95:45);
+}
+function blowCandles(){
+if(blown)return;blown=true;document.getElementById('flame').style.display='none';
+document.getElementById('cakeText').textContent='Wish made, bhai! ✨ May Allah turn your good wishes into beautiful realities.';
+document.getElementById('blow').textContent='Wish Made ✓';document.getElementById('blow').disabled=true;
+document.getElementById('cakeHint').textContent='THIS MOMENT IS ALL YOURS';
+sprinkle(75);setTimeout(()=>{if(current===3)go(4)},2300);
+}
+function openLetter(){
+if(letterOpened)return;letterOpened=true;document.getElementById('env').style.display='none';
+document.getElementById('letter').classList.add('show');document.getElementById('letterNext').style.display='inline-block';sprinkle(22);
+}
+document.getElementById('env').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openLetter()});
+function celebrateAgain(){sprinkle(120);go(6)}
+function restartLetter(){
+letterOpened=false;document.getElementById('env').style.display='grid';document.getElementById('letter').classList.remove('show');document.getElementById('letterNext').style.display='none';
+}
+function resetCake(){
+blown=false;document.getElementById('flame').style.display='block';document.getElementById('cakeText').textContent='Take a breath, make a wish, and think about everything you want from this new chapter.';
+document.getElementById('blow').textContent='Blow Out The Candle ✨';document.getElementById('blow').disabled=false;document.getElementById('cakeHint').textContent='A little magic, just for you';
+}
+function restart(){resetCake();restartLetter();go(1)}
+document.querySelector('#s6 .btn.ghost').onclick=restart;
+sprinkle(58);
+</script>
+</body>
+</html>
